@@ -1,0 +1,17 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.VC.db
+*.VC.opendb
+
+# 빌드 결과물
+Debug/
+Release/
+*.exe
+*.obj
+*.log
+
+# 기타
+*.tmp
+*.bak
