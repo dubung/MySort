@@ -8,6 +8,7 @@ void DataOutput(int* arr);
 
 int main() {
 
+    int iSize = RANDOMSIZE;
 	int* arr = CreateRandom();
 	if (arr == NULL)
 		return 1;
@@ -18,13 +19,22 @@ int main() {
     DataOutput(arr);
     start = clock();
 
-    MyInsertionSort(arr, RANDOMSIZE); // 4.4661 / 4.6470
+    // MyInsertionSort(arr, RANDOMSIZE); // 4.4661 / 4.6470
     // MyMergeSort(arr, 0, RANDOMSIZE-1);
+    MyHeapSort(arr, iSize);
 
     end = clock();
 	DataOutput(arr);
     double duration = (double)(end - start) / CLOCKS_PER_SEC;
-    printf("Insertion Sort 소요시간 : %f", duration);
+
+
+    // arr = MyheapPush(arr,&iSize,RANDOMSIZE+1); // 내부에서 realloc을 해주는데 안에서 선언한 지역변수였음으로 밖으로 빼주어야 됨
+    // DataOutput(arr);
+    // arr = MyheapPop(arr, &iSize);
+    // DataOutput(arr); 
+
+
+
 
 	DeleteRandom(arr);
 	return 0;

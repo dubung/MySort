@@ -16,5 +16,8 @@ void MyMerge(int* arr, int iStart, int iMid, int iEnd); // 병합 단계
 // 병합 정렬
 
 // 힙 정렬
-void MyHeapSort();
+void MyHeapSort(int *arr, int n);
+void Myheapify(int *arr, int n, int i); 
+int* MyheapPop(int* arrSource, int* n);
+int* MyheapPush(int* arrSource, int* n, int i);
 // 힙 정렬

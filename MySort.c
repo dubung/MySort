@@ -5,7 +5,7 @@ void MySwap(int* a, int* b)
 {
 	int temp = *a;
 	*a = *b;
-	*b = *a;
+	*b = temp;
 }
 // ----------------------------------------------------------------------- 버블 정렬 시작
 void MyBubbleSort(int* arr, int iSize)
@@ -136,8 +136,71 @@ void MyMerge(int* arr, int iStart, int iMid, int iEnd)
 	free(pL);
 	free(pR);
 }
-
 // ----------------------------------------------------------------------- 병합 정렬 끝
 
+// ----------------------------------------------------------------------- 힙 정렬 시작
+void MyHeapSort(int* arr, int n)
+{
+	// 배열을 최대 힙구조로 변환 
+	for (int i = n / 2 - 1; i >= 0; i--) {
+		Myheapify(arr, n, i);
+	}
 
+	// 정렬 된 최대 힙구조의 root를 맨 뒤로 보내고  다시 최대 힙구조로 변환 반복
+	for (int i = n - 1; i > 0; i--) {
+		MySwap(&arr[0], &arr[i]);
+		Myheapify(arr, i, 0);
+	}
+
+
+}
+
+void Myheapify(int* arr, int n, int i)
+{
+	int root = i;
+	int left = 2 * i + 1;
+	int right = 2 * i + 2;
+
+	if (left < n && arr[root] < arr[left]) {
+		root = left;
+	}
+	if (right < n && arr[root] < arr[right]) {
+		root = right;
+	}
+
+	if (root != i) {
+		MySwap(&arr[i], &arr[root]);
+		Myheapify(arr, n, root);
+	}
+
+}
+int* MyheapPush(int* arrSource, int *n, int i)
+{
+	(*n)++;
+	int* arr = (int*)realloc((void*)arrSource, (*(n)) * sizeof(int));
+	if (arr == NULL)
+		printf("Push 실패");
+	arr[*n-1] = i;
+	
+	// 배열을 최대 힙구조로 변환 
+	for (int i = (*n-1) / 2 - 1; i >= 0; i--) {
+		Myheapify(arr, *n, i);
+	}
+
+	return arr;
+}
+int* MyheapPop(int* arrSource, int *n)
+{
+
+	arrSource[0] = arrSource[*(n)-1];
+	(*n)--;
+	int* arr = (int*)realloc((void*)arrSource, (*n) * sizeof(int));
+	
+	// 배열을 최대 힙구조로 변환 
+	for (int i = *n / 2 - 1; i >= 0; i--) {
+		Myheapify(arr, *n, i);
+	}
+	return arr;
+}
+// ----------------------------------------------------------------------- 힙 정렬 끝
 
