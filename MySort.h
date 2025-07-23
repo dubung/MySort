@@ -16,8 +16,14 @@ void MyMerge(int* arr, int iStart, int iMid, int iEnd); // 병합 단계
 // 병합 정렬
 
 // 힙 정렬
-void MyHeapSort(int *arr, int n);
-void Myheapify(int *arr, int n, int i); 
-int* MyheapPop(int* arrSource, int* n);
-int* MyheapPush(int* arrSource, int* n, int i);
+void MyHeapSort(int *arr, int iSize);
+void Myheapify(int *arr, int iSize, int i);
+int* MyheapPop(int* arrSource, int* iSize);
+int* MyheapPush(int* arrSource, int* iSize, int i);
 // 힙 정렬
+
+// 쉘 정렬
+void MyShellSort(int* arr, int iSize);
+void shell_sort(int list[], int n);
+void inc_insertion_sort(int list[], int first, int last, int gap);
+// 쉘 정렬

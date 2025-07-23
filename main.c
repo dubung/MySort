@@ -21,12 +21,15 @@ int main() {
 
     // MyInsertionSort(arr, RANDOMSIZE); // 4.4661 / 4.6470
     // MyMergeSort(arr, 0, RANDOMSIZE-1);
-    MyHeapSort(arr, iSize);
+    // MyHeapSort(arr, iSize);
+    MyShellSort(arr, RANDOMSIZE);
+    // shell_sort(arr, RANDOMSIZE);
 
     end = clock();
 	DataOutput(arr);
     double duration = (double)(end - start) / CLOCKS_PER_SEC;
 
+    printf("소요시간 : %lf초\n", duration);
 
     // arr = MyheapPush(arr,&iSize,RANDOMSIZE+1); // 내부에서 realloc을 해주는데 안에서 선언한 지역변수였음으로 밖으로 빼주어야 됨
     // DataOutput(arr);

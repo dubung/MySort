@@ -178,8 +178,10 @@ int* MyheapPush(int* arrSource, int *n, int i)
 {
 	(*n)++;
 	int* arr = (int*)realloc((void*)arrSource, (*(n)) * sizeof(int));
-	if (arr == NULL)
+	if (arr == NULL) {
 		printf("Push 실패");
+		return 0;
+	}
 	arr[*n-1] = i;
 	
 	// 배열을 최대 힙구조로 변환 
@@ -203,4 +205,32 @@ int* MyheapPop(int* arrSource, int *n)
 	return arr;
 }
 // ----------------------------------------------------------------------- 힙 정렬 끝
+
+// ----------------------------------------------------------------------- 쉘 정렬 시작
+void MyShellSort(int* arr, int iSize)
+{
+	int gap;
+	int temp;
+	int i, j, k;
+	for (gap = (iSize / 2); gap > 0; gap /= 2)// 배열을 gap에 맞게 하나의 가상 배열로 나누는 과정
+	{
+		if (!(gap & 1)) gap++;
+		for (j = 0; j < gap; j++) {
+			
+			for (i = j + gap; i < iSize; i+=gap) {// 삽입정렬을 실행 함
+				temp = arr[i];
+				for (k = i - gap; k >= j && arr[k] > temp; k -= gap) {
+					arr[k + gap] = arr[k];
+				}
+				arr[k+gap] = temp;
+			}
+		}
+	}
+
+
+}
+
+// ----------------------------------------------------------------------- 쉘 정렬 시작
+
+
 
