@@ -22,12 +22,12 @@ int main() {
     // MyInsertionSort(arr, RANDOMSIZE); // 4.4661 / 4.6470
     // MyMergeSort(arr, 0, RANDOMSIZE-1);
     // MyHeapSort(arr, iSize);
-    MyShellSort(arr, RANDOMSIZE);
-    // shell_sort(arr, RANDOMSIZE);
+    // MyShellSort(arr, RANDOMSIZE);
+    MyCountingSort(arr, RANDOMSIZE);
 
     end = clock();
 	DataOutput(arr);
-    double duration = (double)(end - start) / CLOCKS_PER_SEC;
+    double duration = ((double)end - (double)start) / CLOCKS_PER_SEC;
 
     printf("소요시간 : %lf초\n", duration);
 

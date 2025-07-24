@@ -24,6 +24,9 @@ int* MyheapPush(int* arrSource, int* iSize, int i);
 
 // 쉘 정렬
 void MyShellSort(int* arr, int iSize);
-void shell_sort(int list[], int n);
-void inc_insertion_sort(int list[], int first, int last, int gap);
 // 쉘 정렬
+
+// 계수 정렬
+void MyCountingSort(int* arr,int iSize);
+// 계수 정렬
+

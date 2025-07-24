@@ -229,8 +229,37 @@ void MyShellSort(int* arr, int iSize)
 
 
 }
-
 // ----------------------------------------------------------------------- 쉘 정렬 시작
 
+// ----------------------------------------------------------------------- 계수 정렬 시작
+void MyCountingSort(int* arr, int iSize)
+{
+	int maxVal = arr[0];
+	for (int i = 1; i < iSize; i++) {
+		if (arr[i] > maxVal) {
+			maxVal = arr[i];
+		}
+	}
+	int* arrCnt = (int*)calloc((maxVal+1), sizeof(int));
+	if (arrCnt == NULL) {
+		return;
+	}
 
+	for (int i = 0; i < iSize; i++) {
+		arrCnt[arr[i]]++;
+	}
+
+	int iCnt = 0;
+	for (int i = 0; i <= maxVal; i++) {
+
+		while (arrCnt[i] > 0) {
+
+			arr[iCnt++] = i;
+			arrCnt[i]--;
+		}
+		
+	}
+	free(arrCnt);
+}
+// ----------------------------------------------------------------------- 계수 정렬 끝
 
