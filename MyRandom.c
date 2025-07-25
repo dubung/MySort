@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "MyRandom.h"
+#include <memory.h>
 
 void DeleteRandom(int* arr) {
 
@@ -22,4 +23,9 @@ int* CreateRandom() {
 	}
 
 	return arr;
+}
+
+void MemSet(void* ptr, int value, size_t num)
+{
+	memset(ptr, value, num);
 }

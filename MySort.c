@@ -7,6 +7,17 @@ void MySwap(int* a, int* b)
 	*a = *b;
 	*b = temp;
 }
+
+int MyGetDigit(int iNum)
+{
+	int iCnt = 0;
+
+	while (iNum != 0) {
+		iCnt++;
+		iNum /= 0;
+	}
+	return iCnt;
+}
 // ----------------------------------------------------------------------- 버블 정렬 시작
 void MyBubbleSort(int* arr, int iSize)
 {
@@ -263,3 +274,63 @@ void MyCountingSort(int* arr, int iSize)
 }
 // ----------------------------------------------------------------------- 계수 정렬 끝
 
+// ----------------------------------------------------------------------- 기수 정렬 시작
+void MyRadixSort(int* arr, int Size)
+{
+	int** arrBucket = (int**)malloc(sizeof(int*) * 10);// 버킷의 수 10개 0 ~~9
+	if (arrBucket == NULL) {
+		return;
+	}
+
+	for (int i = 0; i < 10; i++) {
+		arrBucket[i] = (int*)calloc((int)(Size / 0.15) + 1,sizeof(int));
+		if (arrBucket[i] == NULL) {
+			return;
+		}
+	}
+
+	int* arrBucketCnt = (int*)malloc(sizeof(int) * 11);
+
+
+
+	int iMax = 0,iDigit = 0;
+	for (int i = 0; i < Size; i++) {
+		iDigit = MyGetDigit(arr[i]);
+		if(iMax < iDigit){
+			iMax = iDigit;
+		}
+	}
+
+	for (int exp = 1; iDigit / exp > 0; exp*=10) {
+
+		for (int i = 0; i < 10; i++) {
+			Memset((void*)arr[i], 0, (int)(Size / 0.15));
+		}
+
+		Memset((void*)arrBucketCnt, 0, 10);
+		
+
+
+
+		for (int i = 0; i < Size; i++) {
+			int digit = (arr[i] / exp) % 10;
+			arrBucket[digit][arrBucketCnt[digit]++];
+		}
+
+
+	}
+
+
+
+
+
+
+
+
+
+	for (int i = 0; i < 10; i++) {
+		free(arrBucket[i]);
+	}
+	free(arrBucket);
+}
+// ----------------------------------------------------------------------- 기수 정렬 끝

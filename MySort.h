@@ -1,5 +1,6 @@
 #pragma once
 void MySwap(int* a, int* b);
+int MyGetDigit(int iNum);
 
 // 버블 정렬
 void MyBubbleSort(int* arr, int iSize); // 일반 
@@ -29,4 +30,8 @@ void MyShellSort(int* arr, int iSize);
 // 계수 정렬
 void MyCountingSort(int* arr,int iSize);
 // 계수 정렬
+
+// 기수 정렬
+void MyRadixSort(int* arr, int Size);
+// 기수 정렬
 
